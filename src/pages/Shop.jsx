@@ -8,6 +8,10 @@ const Shop = () => {
   const [paginaActual, setPaginaActual] = useState(0);
   const elementosPorPagina = 8;
 
+  
+
+  
+
   // Aquí debes obtener los productos de alguna manera, por ejemplo, desde el contexto o una API
   const {productos} = useProductoContext(); // Obtén los productos desde el contexto o una API
 
@@ -29,6 +33,10 @@ const Shop = () => {
   const indiceInicio = paginaActual * elementosPorPagina;
   const indiceFin = indiceInicio + elementosPorPagina;
   const productosPagina = productos.slice(indiceInicio, indiceFin);
+
+
+
+
 
   return (
     <div className=" transition-all duration-500 max-w-6xl mx-auto d:flex md:flex-col items-center container  mt-10 md:mt-20">
@@ -62,10 +70,18 @@ const Shop = () => {
           id="select"
           className="border-gray-900 rounded-md shadow-sm font-extrabold  focus:outline-none focus:ring-gray-900 focus:border-gray-900"
         >
+
+      
+
           <option value="option1">Harry Potter</option>
           <option value="option1">Star wars</option>
           <option value="option2">Marvel</option>
           <option value="option2">Pokemon</option>
+
+
+
+
+
         </select>
       </div>
     </div>

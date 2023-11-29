@@ -3,7 +3,7 @@ import axios from "axios";
 
 // Creo el context
 export const ProductosContext = createContext();
-
+/*
 const grillaShop = [
   {
     id: 0,
@@ -165,6 +165,8 @@ const grillaShop = [
     tag2: "destructor",
   },
 ];
+*/
+
 
 // Creo el provider
 const ProductosProvider = ({ children }) => {
