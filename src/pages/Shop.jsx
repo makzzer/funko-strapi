@@ -64,6 +64,11 @@ const Shop = () => {
     }
   };
 
+  const handleCategoriaChange = (e) => {
+    setCategoriaSeleccionada(e.target.value);
+    setPaginaActual(0); // Reinicia la página al cambiar la categoría
+  };
+
   const indiceInicio = paginaActual * elementosPorPagina;
   const indiceFin = indiceInicio + elementosPorPagina;
   const productosFiltrados =
@@ -71,10 +76,6 @@ const Shop = () => {
       ? productos
       : productos.filter((producto) => producto.categoria === categoriaSeleccionada);
   const productosPagina = productosFiltrados.slice(indiceInicio, indiceFin);
-
-  const handleCategoriaChange = (e) => {
-    setCategoriaSeleccionada(e.target.value);
-  };
 
   return (
     <div className="transition-all duration-500 max-w-6xl mx-auto flex flex-col items-center container mt-10 md:mt-20">
