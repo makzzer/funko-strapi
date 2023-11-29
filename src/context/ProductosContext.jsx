@@ -184,7 +184,7 @@ const ProductosProvider = ({ children }) => {
 
   // de aca los levanto de strapi
 
-  const [productos, setProductos] = useState(productosApi);
+  const [productos, setProductos] = useState();
 
   // Obtener los datos de los productos desde la API al cargar la aplicación
   /*useEffect(() => {
@@ -251,14 +251,14 @@ const ProductosProvider = ({ children }) => {
 
 //http://localhost:1337/uploads/luke_1_27af8f544a.webp
 
-        console.log(datosAdaptados);
+        //console.log(datosAdaptados);
 
         // Actualizamos el estado de los productos en el contexto con los datos adaptados
         setProductos(datosAdaptados);
         // Almacenamos los productos en localStorage para futuras cargas de la aplicación
         localStorage.setItem("productosTienda", JSON.stringify(datosAdaptados));
 
-        console.log(datosAdaptados);
+        //console.log(datosAdaptados);
 
         // Asigna los datos adaptados a grillaShop
         //setGrillaShop(datosAdaptados);
