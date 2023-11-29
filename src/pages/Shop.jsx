@@ -1,48 +1,53 @@
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import { useProductoContext } from "../context/ProductosContext";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-
 import ListaGrid from "../components/ListaGrid";
 
 const Shop = () => {
   const [paginaActual, setPaginaActual] = useState(0);
   const elementosPorPagina = 8;
 
-  //estado para categorias
+  // Estado para categorías
   const [categorias, setCategorias] = useState([]);
 
-  //aca voy a solicitar las categorias para el filtro
+  // Estado para la categoría seleccionada
+  const [categoriaSeleccionada, setCategoriaSeleccionada] = useState("Todas");
+
+  // Estado para productos
+  const [productos, setProductos] = useState([]);
+
   useEffect(() => {
-    console.log("entro al use de las categoriasss");
-    // Realizar la solicitud a la API para obtener las categorías
+    // Obtener productos desde la API
+    axios
+      .get("http://localhost:1337/api/funkos?populate=*")
+      .then((response) => {
+        const datosAdaptados = response.data.data.map((item) => ({
+          id: item.id,
+          title: item.attributes.title,
+          categoria: item.attributes.categories?.data[0]?.attributes?.name || "CATEGORIA_POR_DEFECTO",
+          img: "http://localhost:1337" + item.attributes.imagen.data.attributes.formats.small.url,
+          precio: item.attributes.precio,
+          cuotas: `${item.attributes.cuotas} cuotas sin interés`,
+          tag1: item.attributes.tag1,
+          tag2: item.attributes.tag2,
+        }));
+
+        setProductos(datosAdaptados);
+      })
+      .catch((error) => {
+        console.error("Error al obtener los productos:", error);
+      });
+
+    // Obtener categorías desde la API
     axios
       .get("http://localhost:1337/api/categories")
       .then((response) => {
-        // Almacena solo los nombres de las categorías en el estado del componente
-        const categoriasNombres = response.data.data.map(
-          (categoria) => categoria.attributes.name
-        );
-
-        
-
-        setCategorias((prevCategorias) => [
-          ...categoriasNombres,
-        ]);
-        console.log(categorias);
+        const categoriasNombres = response.data.data.map((categoria) => categoria.attributes.name);
+        setCategorias(["Todas", ...categoriasNombres]);
       })
       .catch((error) => {
         console.error("Error al obtener las categorías:", error);
       });
-  }, []); // El segundo parámetro [] asegura que useEffect se ejecute solo una vez al montar el componente
-
-  // Este efecto se ejecutará cada vez que las categorías cambien
-  useEffect(() => {
-    console.log("Categorías actualizadas:", categorias);
-  }, [categorias]);
-
-  // Aquí debes obtener los productos de alguna manera, por ejemplo, desde el contexto o una API
-  const { productos } = useProductoContext(); // Obtén los productos desde el contexto o una API
+  }, []);
 
   const handlePaginaAnterior = () => {
     if (paginaActual > 0) {
@@ -52,7 +57,7 @@ const Shop = () => {
   };
 
   const handlePaginaSiguiente = () => {
-    const ultimaPagina = Math.ceil(productos.length / elementosPorPagina) - 1;
+    const ultimaPagina = Math.ceil(productosFiltrados.length / elementosPorPagina) - 1;
     if (paginaActual < ultimaPagina) {
       setPaginaActual((prevPagina) => prevPagina + 1);
       window.scrollTo(0, 0);
@@ -61,47 +66,50 @@ const Shop = () => {
 
   const indiceInicio = paginaActual * elementosPorPagina;
   const indiceFin = indiceInicio + elementosPorPagina;
-  const productosPagina = productos.slice(indiceInicio, indiceFin);
+  const productosFiltrados =
+    categoriaSeleccionada === "Todas"
+      ? productos
+      : productos.filter((producto) => producto.categoria === categoriaSeleccionada);
+  const productosPagina = productosFiltrados.slice(indiceInicio, indiceFin);
+
+  const handleCategoriaChange = (e) => {
+    setCategoriaSeleccionada(e.target.value);
+  };
 
   return (
-    <div className=" transition-all duration-500 max-w-6xl mx-auto d:flex md:flex-col items-center container  mt-10 md:mt-20">
+    <div className="transition-all duration-500 max-w-6xl mx-auto flex flex-col items-center container mt-10 md:mt-20">
       <div className="text-center text-4xl md:text-6xl mt-22 pt-14">
         <h1>Shop</h1>
       </div>
 
-      {/*div flex col que contiene  barra y filtros*/}
-
-      <div className=" pt-7 md:flex-row flex-col md:flex items-center justify-between md:mb-10 mb-2">
+      <div className="pt-7 md:flex-row flex-col md:flex items-center justify-between md:mb-10 mb-2">
         <div className="flex mb-1 md:mb-3 justify-between px-1">
-          <form className="w-full ">
+          <form className="w-full">
             <div className="flex">
               <input
                 type="text"
                 placeholder="Busca tu funko"
-                className="w-full border border-gray-300 rounded-lg py-3 px-6   md:w-[55rem]"
+                className="w-full border border-gray-300 rounded-lg py-3 px-6 md:w-[55rem]"
               />
             </div>
           </form>
         </div>
 
         <div className="mb-2 flex md:flex-row flex-col md:items-center items-start text-base md:text-lg ps-4">
-          <label
-            htmlFor="select"
-            className="text-gray-700 font-semibold mt-2 me-1 mb-2"
-          >
+          <label htmlFor="select" className="text-gray-700 font-semibold mt-2 me-1 mb-2">
             Ordenar por:
           </label>
           <select
             id="select"
-            className="border-gray-900 rounded-md shadow-sm font-extrabold  focus:outline-none focus:ring-gray-900 focus:border-gray-900"
+            className="border-gray-900 rounded-md shadow-sm font-extrabold focus:outline-none focus:ring-gray-900 focus:border-gray-900"
+            value={categoriaSeleccionada}
+            onChange={handleCategoriaChange}
           >
-            
             {categorias.map((categoria) => (
-              <option key={categoria.id} value={categoria.name}>
+              <option key={categoria} value={categoria}>
                 {categoria}
               </option>
-            ))} 
-
+            ))}
           </select>
         </div>
       </div>
