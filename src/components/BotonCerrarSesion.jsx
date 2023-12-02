@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
-import IconoLogotipoSimple from "../components/icons/IconLogotipoSimple";
+import IconoLogotipoSimple from "./icons/IconLogotipoSimple";
 import { logout } from "../config/firebase";
 
 
-const UnderConstruction = () => {
+const BotonCerrarSesion = () => {
 
 
 
@@ -37,4 +37,4 @@ const UnderConstruction = () => {
   );
 };
 
-export default UnderConstruction;
+export default BotonCerrarSesion;
