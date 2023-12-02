@@ -3,6 +3,8 @@ import axios from "axios";
 
 // Creo el context
 export const ProductosContext = createContext();
+
+
 /*
 const grillaShop = [
   {
@@ -175,7 +177,9 @@ const ProductosProvider = ({ children }) => {
 
   // Defino que arranque con 2 random o que lo levante de localStorage
   const productosIniciales =
-    JSON.parse(localStorage.getItem("productosTienda")) || grillaShop;
+    //JSON.parse(localStorage.getItem("productosTienda")) || grillaShop;
+    JSON.parse(localStorage.getItem("productosTienda"));
+
 
   const productosApi = "";
 
