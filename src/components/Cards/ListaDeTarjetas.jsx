@@ -1,15 +1,5 @@
+import React from 'react';
 import { Card, CardContent, CardMedia, Typography, Link } from '@mui/material';
-
-
-const orders = [
-  {
-    date: '1 de diciembre',
-    productImage: 'https://http2.mlstatic.com/D_850569-MLA71326648254_082023-N.jpg',
-    status: 'En preparación',
-    productTitle: 'Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!',
-    productInfo: '1 unidad',
-    productLink: 'https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM',
-  },]
 
 const OrderList = ({ orders }) => {
   return (

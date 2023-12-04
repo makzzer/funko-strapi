@@ -20,12 +20,77 @@ import { mainListItems, secondaryListItems } from "./listItems";
 import Chart from "./Chart";
 import Profit from "./Profit";
 import TablaCompras from "./TablaCompras";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BotonCerrarSesion from "../BotonCerrarSesion";
-
-
-
 import OrderList from "../Cards/OrderList";
+
+
+
+//import axios from "axios";
+
+
+//import { response } from "express";
+
+/*
+//estado de compras - osea la lista de compras con las que incializo
+const [compras,setCompras] = useState([]);
+
+
+
+useEffect(() => {
+  // Obtener productos desde la API
+  axios
+    .get("http://localhost:1337/api/funkos?populate=*")
+    .then((response) => {
+      const datosAdaptados = response.data.data.map((item) => ({
+        id: item.id,
+        title: item.attributes.title,
+        categoria: item.attributes.categories?.data[0]?.attributes?.name || "CATEGORIA_POR_DEFECTO",
+        img: "http://localhost:1337" + item.attributes.imagen.data.attributes.formats.small.url,
+        precio: item.attributes.precio,
+        cuotas: `${item.attributes.cuotas} cuotas sin interés`,
+        tag1: item.attributes.tag1,
+        tag2: item.attributes.tag2,
+      }));
+
+      setCompras(datosAdaptados);
+    })
+    .catch((error) => {
+      console.error("Error al obtener los productos:", error);
+    });
+
+}, []);
+
+
+*/
+
+/*
+//llamada asincronica a las compras
+useEffect(() => {
+  Axios.get("http://localhost:1337/api/compras?populate=*")
+    .then((response) => {
+      const detalleCompra = response.data.data.map((item) => ({
+        id: item.id,
+        fecha: item.fecha,
+        cantidad: item.cantidad,
+        monto: item.precio,
+        producto: item.producto,
+        estadoCompra: item.estadoCompra
+      }));
+
+      console.log(detalleCompra)
+
+
+      setCompras(detalleCompra);
+    })
+    .catch((error) => {
+      console.error("Error al obtener los productos:", error);
+    });
+}, []); // Asegúrate de pasar un array vacío como dependencia si solo quieres que se ejecute una vez
+
+*/
+
+
 
 function Copyright(props) {
   return (
@@ -44,6 +109,7 @@ function Copyright(props) {
     </Typography>
   );
 }
+
 
 const drawerWidth = 240;
 
@@ -94,7 +160,7 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function DashboardUsuario() {
+function DashboardUsuario() {
   const [open, setOpen] = useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
@@ -102,53 +168,45 @@ export default function DashboardUsuario() {
 
   const orders = [
     {
-      date: '1 de diciembre',
-      productImage: 'https://http2.mlstatic.com/D_850569-MLA71326648254_082023-N.jpg',
-      status: 'En preparación',
-      productTitle: 'Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!',
-      productInfo: '1 unidad',
-      productLink: 'https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM',
-    },]
+      date: "1 de diciembre",
+      productImage:
+        "http://localhost:1337/uploads/thumbnail_luke_1_27af8f544a.webp",
+      status: "En preparación",
+      productTitle: "Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!",
+      productInfo: "1 unidad",
+      productLink:
+        "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
+    },
+    {
+      date: "2 de diciembre",
+      productImage:
+        "http://localhost:1337/uploads/thumbnail_luke_1_27af8f544a.webp",
+      status: "En preparación",
+      productTitle: "Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!",
+      productInfo: "1 unidad",
+      productLink:
+        "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
+    },
+
+    {
+      date: "3 de diciembre",
+      productImage:
+        "http://localhost:1337/uploads/thumbnail_luke_1_27af8f544a.webp",
+      status: "En preparación",
+      productTitle: "Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!",
+      productInfo: "1 unidad",
+      productLink:
+        "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
+    }
+    
+  ];
 
   return (
     <ThemeProvider theme={defaultTheme}>
       <Typography variant="h3">Compras</Typography>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-        {/*<AppBar position="absolute" open={open}>
-          <Toolbar
-            sx={{
-              pr: '24px', // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="open drawer"
-              onClick={toggleDrawer}
-              sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' }),
-              }}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component="h1"
-              variant="h6"
-              color="inherit"
-              noWrap
-              sx={{ flexGrow: 1 }}
-            >
-              Dashboard
-            </Typography>
-            <IconButton color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
-            </Toolbar>
-        </AppBar>*/}
+      
         <Drawer variant="permanent" open={open} sx={{ zIndex: 0 }}>
           <Toolbar
             sx={{
@@ -196,7 +254,7 @@ export default function DashboardUsuario() {
                     
                   }}
                 >
-                  <OrderList />
+                  <OrderList orders={orders} />
                   
                 </Paper>
               </Grid>
@@ -209,3 +267,6 @@ export default function DashboardUsuario() {
     </ThemeProvider>
   );
 }
+
+
+export default DashboardUsuario;

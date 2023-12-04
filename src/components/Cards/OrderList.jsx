@@ -7,30 +7,7 @@ import Link from "@mui/material/Link";
 
 
 
-const OrderList = () => {
-  
-  const orders = [
-    {
-      date: "1 de diciembre",
-      productImage:
-        "http://localhost:1337/uploads/thumbnail_luke_1_27af8f544a.webp",
-      status: "En preparación",
-      productTitle: "Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!",
-      productInfo: "1 unidad",
-      productLink:
-        "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
-    },
-    {
-      date: "2 de diciembre",
-      productImage:
-        "http://localhost:1337/uploads/thumbnail_luke_1_27af8f544a.webp",
-      status: "En preparación",
-      productTitle: "Vitalcan Balanced Perro Adulto Grande 20k + Regalo!!",
-      productInfo: "1 unidad",
-      productLink:
-        "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
-    },
-  ];
+const OrderList = ({orders}) => {
   return (
     <>
       {orders.map((orden, index) => (
