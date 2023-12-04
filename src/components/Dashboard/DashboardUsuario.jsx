@@ -110,24 +110,37 @@ function DashboardUsuario() {
 
 //llamada asincronica a las compras
 useEffect(() => {
-  axios.get("http://localhost:1337/api/compras?populate=*")
+  axios.get("http://localhost:1337/api/funkos?populate=*")
     .then((response) => {
-      const detalleCompra = response.data.data.map((item) => ({
-        id: item.id,
-        fecha: item.attributes.fecha,
-        cantidad: item.attributes.cantidadProductos, // Asegúrate de usar la clave correcta
-        monto: item.attributes.monto,
-        producto: item.attributes.productosComprados.data.map(producto => producto.attributes.title),
-        estadoCompra: item.attributes.estado_compra.data.attributes.name || 'Estado Desconocido', // Manejar el caso de undefined
-      }));
+      const productosData = response.data.data;
 
-      setCompras(detalleCompra);
-      console.log(detalleCompra);
+      axios.get("http://localhost:1337/api/compras?populate=*")
+        .then((responseCompras) => {
+          const detalleCompra = responseCompras.data.data.map((item) => {
+            const productoRelacionado = productosData.find(producto => producto.id === item.attributes.productosComprados.data[0].id);
+
+            return {
+              id: item.id,
+              fecha: item.attributes.fecha,
+              cantidad: item.attributes.cantidadProductos,
+              monto: item.attributes.productosComprados.data.map(producto => producto.attributes.precio),
+              producto: item.attributes.productosComprados.data.map(producto => producto.attributes.title),
+              estadoCompra: item.attributes.estado_compra.data.attributes.name || 'Estado Desconocido',
+              imagen: productoRelacionado ? "http://localhost:1337" + productoRelacionado.attributes.imagen.data.attributes.formats.small.url : null,
+            };
+          });
+
+          setCompras(detalleCompra);
+          console.log(detalleCompra);
+        })
+        .catch((errorCompras) => {
+          console.error("Error al obtener las compras:", errorCompras);
+        });
     })
-    .catch((error) => {
-      console.error("Error al obtener los productos:", error);
+    .catch((errorProductos) => {
+      console.error("Error al obtener los productos:", errorProductos);
     });
-}, []); // Asegúrate de pasar un array vacío como dependencia si solo quieres que se ejecute una vez
+}, []);
 
 
   const orders = [
@@ -216,7 +229,7 @@ useEffect(() => {
                     //flexGrow: 1,
                   }}
                 >
-                  <OrderList orders={orders} />
+                  <OrderList orders={compras} />
                 </Paper>
               </Grid>
             </Grid>

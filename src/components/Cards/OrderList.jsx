@@ -14,8 +14,8 @@ const OrderList = ({orders}) => {
         <Card key={index} sx={{ minWidth: 900, marginBottom: 2 }}>
           <CardMedia
             component="img"
-            image={orden.productImage}
-            alt={orden.title}
+            image={orden.imagen}
+            alt={orden.producto}
             sx={{
               objectFit: 'cover',
               width: '140px',  // Ajusta el ancho de la imagen
@@ -25,16 +25,16 @@ const OrderList = ({orders}) => {
           />
           <CardContent>
             <Typography variant="h6" component="div">
-              {orden.date}
+              {orden.fecha}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {orden.status}
+              {orden.estadoCompra}
             </Typography>
             <Typography variant="body1" paragraph>
-              {orden.productTitle}
+              {orden.producto}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {orden.productInfo}
+              {"$"+orden.monto}
             </Typography>
             <Link href={orden.productLink} target="_blank">
               Ver Detalles
