@@ -24,71 +24,11 @@ import { useEffect, useState } from "react";
 import BotonCerrarSesion from "../BotonCerrarSesion";
 import OrderList from "../Cards/OrderList";
 
-
-
-//import axios from "axios";
-
+import axios from "axios";
 
 //import { response } from "express";
 
-/*
-//estado de compras - osea la lista de compras con las que incializo
-const [compras,setCompras] = useState([]);
 
-
-
-useEffect(() => {
-  // Obtener productos desde la API
-  axios
-    .get("http://localhost:1337/api/funkos?populate=*")
-    .then((response) => {
-      const datosAdaptados = response.data.data.map((item) => ({
-        id: item.id,
-        title: item.attributes.title,
-        categoria: item.attributes.categories?.data[0]?.attributes?.name || "CATEGORIA_POR_DEFECTO",
-        img: "http://localhost:1337" + item.attributes.imagen.data.attributes.formats.small.url,
-        precio: item.attributes.precio,
-        cuotas: `${item.attributes.cuotas} cuotas sin interés`,
-        tag1: item.attributes.tag1,
-        tag2: item.attributes.tag2,
-      }));
-
-      setCompras(datosAdaptados);
-    })
-    .catch((error) => {
-      console.error("Error al obtener los productos:", error);
-    });
-
-}, []);
-
-
-*/
-
-/*
-//llamada asincronica a las compras
-useEffect(() => {
-  Axios.get("http://localhost:1337/api/compras?populate=*")
-    .then((response) => {
-      const detalleCompra = response.data.data.map((item) => ({
-        id: item.id,
-        fecha: item.fecha,
-        cantidad: item.cantidad,
-        monto: item.precio,
-        producto: item.producto,
-        estadoCompra: item.estadoCompra
-      }));
-
-      console.log(detalleCompra)
-
-
-      setCompras(detalleCompra);
-    })
-    .catch((error) => {
-      console.error("Error al obtener los productos:", error);
-    });
-}, []); // Asegúrate de pasar un array vacío como dependencia si solo quieres que se ejecute una vez
-
-*/
 
 
 
@@ -109,7 +49,6 @@ function Copyright(props) {
     </Typography>
   );
 }
-
 
 const drawerWidth = 240;
 
@@ -166,6 +105,31 @@ function DashboardUsuario() {
     setOpen(!open);
   };
 
+  //estado de compras - osea la lista de compras con las que incializo
+  const [compras, setCompras] = useState([]);
+
+//llamada asincronica a las compras
+useEffect(() => {
+  axios.get("http://localhost:1337/api/compras?populate=*")
+    .then((response) => {
+      const detalleCompra = response.data.data.map((item) => ({
+        id: item.id,
+        fecha: item.attributes.fecha,
+        cantidad: item.attributes.cantidadProductos, // Asegúrate de usar la clave correcta
+        monto: item.attributes.monto,
+        producto: item.attributes.productosComprados.data.map(producto => producto.attributes.title),
+        estadoCompra: item.attributes.estado_compra.data.attributes.name || 'Estado Desconocido', // Manejar el caso de undefined
+      }));
+
+      setCompras(detalleCompra);
+      console.log(detalleCompra);
+    })
+    .catch((error) => {
+      console.error("Error al obtener los productos:", error);
+    });
+}, []); // Asegúrate de pasar un array vacío como dependencia si solo quieres que se ejecute una vez
+
+
   const orders = [
     {
       date: "1 de diciembre",
@@ -197,8 +161,7 @@ function DashboardUsuario() {
       productInfo: "1 unidad",
       productLink:
         "https://articulo.mercadolibre.com.ar/MLA-1471292850-vitalcan-balanced-perro-adulto-grande-20k-regalo-_JM",
-    }
-    
+    },
   ];
 
   return (
@@ -206,7 +169,7 @@ function DashboardUsuario() {
       <Typography variant="h3">Compras</Typography>
       <Box sx={{ display: "flex" }}>
         <CssBaseline />
-      
+
         <Drawer variant="permanent" open={open} sx={{ zIndex: 0 }}>
           <Toolbar
             sx={{
@@ -246,16 +209,14 @@ function DashboardUsuario() {
                 <Paper
                   elevation={3}
                   sx={{
-                    minWidth:"100vh",
+                    minWidth: "100vh",
                     p: 2,
                     display: "flex",
-                    flexDirection: "column"
+                    flexDirection: "column",
                     //flexGrow: 1,
-                    
                   }}
                 >
                   <OrderList orders={orders} />
-                  
                 </Paper>
               </Grid>
             </Grid>
@@ -267,6 +228,5 @@ function DashboardUsuario() {
     </ThemeProvider>
   );
 }
-
 
 export default DashboardUsuario;
