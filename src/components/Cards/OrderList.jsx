@@ -5,9 +5,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Link from "@mui/material/Link";
 
-
-
-const OrderList = ({orders}) => {
+const OrderList = ({ orders }) => {
   return (
     <>
       {orders.map((orden, index) => (
@@ -17,9 +15,9 @@ const OrderList = ({orders}) => {
             image={orden.imagen}
             alt={orden.producto}
             sx={{
-              objectFit: 'cover',
-              width: '140px',  // Ajusta el ancho de la imagen
-              height: '140px', // Ajusta la altura de la imagen
+              objectFit: "cover",
+              width: "140px", // Ajusta el ancho de la imagen
+              height: "140px", // Ajusta la altura de la imagen
               margin: "auto",
             }}
           />
@@ -27,14 +25,14 @@ const OrderList = ({orders}) => {
             <Typography variant="h6" component="div">
               {orden.fecha}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
-              {orden.estadoCompra}
-            </Typography>
             <Typography variant="body1" paragraph>
               {orden.producto}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-              {"$"+orden.monto}
+              {orden.estadoCompra}
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              {"$" + orden.monto}
             </Typography>
             <Link href={orden.productLink} target="_blank">
               Ver Detalles
