@@ -19,6 +19,7 @@ const ItemTienda = ({ id, title, description, img }) => {
             <NavLink to={"/shop"} className="px-20 py-4 text-2xl bg-gray-800 hover:bg-gray-900 text-white font-bold rounded-full">
               Ver colección
             </NavLink>
+            
           </div>
         </article>
 

@@ -66,7 +66,7 @@ const ItemLanzamiento = ({
           <span className="inline-block mb-1 md:mb-0 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             {tag2}
           </span>
-          <div className=" text-center items-center">
+          <div className=" flex justify-center space-x-2 flex-row text-center items-center">
             <button
               //onClick={() => agregarAlCarrito(id)}
               onClick={()=>comprarArticulo(id)}
@@ -74,6 +74,16 @@ const ItemLanzamiento = ({
             >
               Comprar
             </button>
+
+            <button
+              //onClick={() => agregarAlCarrito(id)}
+              onClick={()=>comprarArticulo(id)}
+              className="bg-gray-800 rounded-lg min-w-[88px] p-2 mt-2 font-semibold text-white hover:bg-gray-500"
+            >
+              Detalles
+            </button>
+
+
           </div>
         </div>
       </div>

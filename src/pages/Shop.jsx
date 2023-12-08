@@ -83,7 +83,7 @@ const Shop = () => {
         <h1>Shop</h1>
       </div>
 
-      <div className="pt-7 md:flex-row flex-col md:flex items-center justify-between md:mb-10 mb-2">
+      <div className="pt-7 flex-row md:flex md:items-center justify-items-center justify-between md:mb-10 mb-2">
         <div className="flex mb-1 md:mb-3 justify-between px-1">
           <form className="w-full">
             <div className="flex">
@@ -97,12 +97,12 @@ const Shop = () => {
         </div>
 
         <div className="mb-2 flex md:flex-row flex-col md:items-center items-start text-base md:text-lg ps-4">
-          <label htmlFor="select" className="text-gray-700 font-semibold mt-2 me-1 mb-2">
+          <label htmlFor="select" className="text-gray-700 md:block md:px-1 font-semibold hidden mt-2 me-1 mb-2">
             Ordenar por:
           </label>
           <select
             id="select"
-            className="border-gray-900 rounded-md shadow-sm font-extrabold focus:outline-none focus:ring-gray-900 focus:border-gray-900"
+            className="border-gray-900 rounded-md shadow-md from-neutral-700 focus:outline-none focus:ring-gray-900 focus:border-gray-900"
             value={categoriaSeleccionada}
             onChange={handleCategoriaChange}
           >
