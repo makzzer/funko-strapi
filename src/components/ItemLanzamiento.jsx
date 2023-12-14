@@ -1,6 +1,6 @@
 import { useCarritoContext } from "../context/CarritoContext";
-
-
+import { Link, useNavigate } from "react-router-dom";
+import DetallesProducto from "../pages/DetallesProducto";
 
 
 
@@ -15,6 +15,8 @@ const ItemLanzamiento = ({
   tag2,
 }) => {
 
+  //defino los contextos y lo que voy a usar como el navigate
+  const navigate = useNavigate()
 
   const { agregarAlCarrito } = useCarritoContext();
 
@@ -36,6 +38,12 @@ const ItemLanzamiento = ({
       tag2,
     };
     agregarAlCarrito(item)
+  }
+
+
+
+  const verMas = () =>{
+navigate("/productodetalle")
   }
 
 
@@ -66,21 +74,21 @@ const ItemLanzamiento = ({
           <span className="inline-block mb-1 md:mb-0 bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2">
             {tag2}
           </span>
-          <div className=" flex justify-center space-x-2 flex-row text-center items-center">
+          <div className=" flex justify-center md:space-x-2 space-x-1 flex-row text-center items-center">
             <button
               //onClick={() => agregarAlCarrito(id)}
               onClick={()=>comprarArticulo(id)}
-              className="bg-red-800 rounded-lg p-2 mt-2 font-semibold text-white hover:bg-red-600"
+              className="bg-red-800 rounded-lg  md:p-2 p-1 mt-2 font-semibold text-white hover:bg-red-600"
             >
               Comprar
             </button>
 
             <button
               //onClick={() => agregarAlCarrito(id)}
-              onClick={()=>comprarArticulo(id)}
-              className="bg-gray-800 rounded-lg min-w-[88px] p-2 mt-2 font-semibold text-white hover:bg-gray-500"
+              onClick={()=>verMas()}
+              className="bg-gray-800 rounded-lg md:min-w-[88px] min-w-[74px] md:p-2 p-1 mt-2 font-semibold text-white hover:bg-gray-500"
             >
-              Detalles
+              Ver más
             </button>
 
 
