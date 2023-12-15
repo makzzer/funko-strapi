@@ -31,6 +31,7 @@ const DetallesProducto = () => {
           cuotas: `${item.attributes.cuotas} cuotas sin interés`,
           tag1: item.attributes.tag1,
           tag2: item.attributes.tag2,
+          description: item.attributes.description, // Agregado
         }));
 
         setProductos(datosAdaptados);
@@ -55,8 +56,6 @@ const DetallesProducto = () => {
   console.log("esta es la longitud de los productos que trae la api:" + productos.length);
   console.log("este es el iddddddddddddd" + id);
 
-
-  
   useEffect(() => {
     // Filtrar el producto por id después de obtener todos los datos adaptados
     const productoFiltrado = productos.find((producto) => producto.id.toString() === id);
@@ -72,33 +71,25 @@ const DetallesProducto = () => {
 
   return (
     <>
-      <div className="transition-all duration-500 max-w-6xl mx-auto flex flex-col items-center container mt-10 md:mt-20">
-      <div className="flex-none w-14 mt-20 bg-gray-400 h-14">01</div>
-<div className="w-64 mt-20 bg-red-500 h-14 flex-1">
-  {productoSeleccionado ? (
-    <>
-      <img
-        src={productoSeleccionado.img} // Asegúrate de tener la propiedad img en tu objeto productoSeleccionado
-        alt={productoSeleccionado.title}
-        className="max-w-full h-auto"
-      />
-      <h2>{productoSeleccionado.title}</h2>
-      <p>{productoSeleccionado.description}</p> {/* Asegúrate de tener la propiedad descripcion en tu objeto productoSeleccionado */}
-    </>
-  ) : (
-    "nadaaa"
-  )}
-</div>
-<div className="w-32 mt-20 bg-green-300 h-14 flex-1">03</div>
-        <h1 className="mt-20">hola PT</h1>
-
-        <button
-          className="bg-blue-500 hover:bg-red-800 mb-2 text-white font-bold py-2 px-4 rounded"
-          onClick={volverPT}
-        >
-          {" "}
-          Volve PT{" "}
-        </button>
+      <div className="transition-all duration-500 md:max-w-6xl max-w-3xl px-4 md:px-0 mx-auto flex flex-col items-center container mt-10 md:mt-20">
+        <div className="bg-gray-100 mt-20 mb-20 rounded-lg overflow-hidden shadow-lg p-6">
+          <img
+            src={productoSeleccionado?.img} // Asegúrate de tener la propiedad img en tu objeto productoSeleccionado
+            alt={productoSeleccionado?.title}
+            className="w-full h-auto"
+          />
+          <h2 className="text-xl font-bold mt-4">{productoSeleccionado?.title}</h2>
+          <p className="text-gray-600">{productoSeleccionado?.description}</p>
+          <div className="flex justify-between mt-4">
+            <span className="text-blue-500 text-transform:uppercase">{productoSeleccionado?.precio}</span>
+            <button
+              className="bg-red-800 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
+              onClick={volverPT}
+            >
+              Volver
+            </button>
+          </div>
+        </div>
       </div>
     </>
   );
