@@ -42,8 +42,9 @@ const ItemLanzamiento = ({
 
 
 
-  const verMas = () =>{
-navigate("/productodetalle")
+  const verMas = (id) =>{
+    console.log("el ide del ver mas "+id)
+    navigate(`/productodetalle/${id}`)
   }
 
 
@@ -84,8 +85,7 @@ navigate("/productodetalle")
             </button>
 
             <button
-              //onClick={() => agregarAlCarrito(id)}
-              onClick={()=>verMas()}
+              onClick={()=>verMas(id)}
               className="bg-gray-800 rounded-lg md:min-w-[88px] min-w-[74px] md:p-2 p-1 mt-2 font-semibold text-white hover:bg-gray-500"
             >
               Ver más

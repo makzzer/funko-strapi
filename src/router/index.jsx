@@ -55,11 +55,9 @@ export const router = createBrowserRouter([
       },
 
       {
-        path: "/productodetalle",
-        element: <DetallesProducto />,
+        path: "/productodetalle/:id",
+        element: <DetallesProducto/>,
       },
-
-
     ],
   },
 ]);
