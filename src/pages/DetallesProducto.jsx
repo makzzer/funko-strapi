@@ -32,6 +32,7 @@ const DetallesProducto = () => {
           tag1: item.attributes.tag1,
           tag2: item.attributes.tag2,
           description: item.attributes.description, // Agregado
+          cantidadDisponible: item.attributes.cantidad,
         }));
 
         setProductos(datosAdaptados);
@@ -103,9 +104,7 @@ const DetallesProducto = () => {
             <p className="text-gray-600 text-justify">
               {productoSeleccionado?.description}
             </p>
-
-                    
-        <div className="mx-auto md:mt-8 mt-6 items-end flex">
+            <div className="mx-auto md:mt-8 mt-6 items-end flex">
               <button
                 className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
                 onClick={volverPT}
@@ -114,18 +113,13 @@ const DetallesProducto = () => {
               </button>
             </div>
 
-
-
+            <div className="mx-auto mt-2 items-end flex">
+              <span className="text-blue-500 mb-6 font-semibold text-transform:uppercase">
+                ¡Últimas {productoSeleccionado?.cantidadDisponible} unidades disponibles!
+              </span>
+            </div>
           </div>
-
-
-
-
         </div>
-
-
-
-
       </div>
     </>
   );
