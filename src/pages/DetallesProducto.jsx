@@ -109,12 +109,12 @@ const DetallesProducto = () => {
                 className="bg-red-600 hover:bg-red-800 text-white font-bold py-2 px-4 rounded"
                 onClick={volverPT}
               >
-                Volver
+                Comprar
               </button>
             </div>
 
             <div className="mx-auto mt-2 items-end flex">
-              <span className="text-blue-500 mb-6 font-semibold text-transform:uppercase">
+              <span className="text-blue-600 mb-6 font-semibold text-transform:uppercase">
                 ¡Últimas {productoSeleccionado?.cantidadDisponible} unidades disponibles!
               </span>
             </div>
