@@ -82,3 +82,15 @@ export const register = ({email,password})=>{
 export const logout = () =>{
     return signOut(auth)
 }
+
+
+// Métodos para iniciar sesión con Google y Facebook
+export const signInWithGoogle = () => {
+  const googleProvider = new GoogleAuthProvider();
+  return signInWithPopup(auth, googleProvider);
+};
+
+export const signInWithFacebook = () => {
+  const facebookProvider = new FacebookAuthProvider();
+  return signInWithPopup(auth, facebookProvider);
+};

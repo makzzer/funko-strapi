@@ -11,6 +11,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  const [userApellido, setUseruserApellido] = useState("");
 
   const handleCrearCuenta = async (e) => {
     e.preventDefault();
@@ -61,6 +62,22 @@ const SignUp = () => {
               //value={email}
               //onChange={(e) => setEmail(e.target.value)}
               id="ApellidoUsuario"
+              className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+          </div>
+
+          <div className="mb-4">
+            <label
+              htmlFor="telefonoo"
+              className="block text-gray-700 font-bold mb-2 text-sm text-start"
+            >
+              Telefono
+            </label>
+            <input
+              type="tel"
+              //value={email}
+              //onChange={(e) => setEmail(e.target.value)}
+              id="telefono"
               className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             />
           </div>
