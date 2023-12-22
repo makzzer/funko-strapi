@@ -25,14 +25,10 @@ const Nav = () => {
       to: "/shop",
       classname: clasesita,
     },
-    {
-      name: "CONTACTO",
-      to: "/contacto",
-      classname: clasesita,
-    },
+
     {
       name: "INGRESAR",
-      to: "/ingresar",
+      to: "/micuenta",
       classname: clasesita,
     },
     {

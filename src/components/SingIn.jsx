@@ -30,7 +30,9 @@ const SignIn = () => {
 
   return (
     <>
+    
       <div className="rounded-md flex flex-col justify-center items-center">
+        
         <form
           onSubmit={handleIniciarSesion}
           className=" flex flex-col bg-gray-200 shadow-md rounded px-8 py-6 mt-4 min-w-[20rem] md:w-[20rem]"
@@ -85,12 +87,13 @@ const SignIn = () => {
               className="w-full bg-red-700  hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               type="submit"
             >
-              Sign In
+              Iniciar Sesión
             </button>
           </div>
         </form>
       </div>
 
+{/** 
       <div className="flex justify-center bg-gray-200 shadow-md rounded px-8 py-4 mt-4 min-w-[20rem] md:w-[20rem]">
         <h1 className="block text-gray-700 font-bold mb-2 text-sm text-start">
           New in Funko?
@@ -102,7 +105,9 @@ const SignIn = () => {
           Create Account
         </a>
       </div>
+       */}
     </>
+   
   );
 };
 

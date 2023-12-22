@@ -3,7 +3,6 @@ import Home from "../pages/Home";
 import NotFound from "../pages/NotFound";
 import Shop from "../pages/Shop";
 import Ingresar from "../pages/Ingresar";
-import Contacto from "../pages/Contacto";
 //importo el array que le paso como prop al Home, sino no funciona
 import { elementosLanding, nuevosLanzamientos, grillaShop } from "../App";
 import DefaultLayout from "../layouts/DefaultLayout";
@@ -34,13 +33,8 @@ export const router = createBrowserRouter([
         element: <Shop />,
       },
       {
-        path: "/ingresar",
+        path: "/micuenta",
         element: <Ingresar />,
-      },
-
-      {
-        path: "/contacto",
-        element: <Contacto />,
       },
 
       {
