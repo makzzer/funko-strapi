@@ -4,15 +4,12 @@ import { useEffect } from "react";
 import { DetectarTamañoPantalla } from "../utilities/DetectarTamañoPantalla";
 import { NavLink } from "react-router-dom";
 
-
 const Carrito = () => {
   //desestructuro desde m context los metodos y el array de carrito para usarlo en este componente
   const { carrito, vaciarCarrito, totalCarrito } = useCarritoContext();
 
   // llamo al userContext para ver si lo toma
- // const { user } = useUserContext();
-
- 
+  // const { user } = useUserContext();
 
   //metodo que traigo de otro componente para ver si estoy en pantalla pequeña
   const esPantallaMobile = DetectarTamañoPantalla();
@@ -33,8 +30,8 @@ const Carrito = () => {
 
       {carrito.length === 0 ? (
         <>
-          <div className="bg-gray-900 p-4 mb-6 mx-2">
-            <h1 className="md:text-4xl text-2xl text-bold text-red-700 mb-4">
+          <div className=" p-4 mb-6 mx-2">
+            <h1 className="md:text-2xl text-2xl text-bold text-red-700 mb-4">
               Tu carrito está vacío
             </h1>
           </div>
@@ -76,11 +73,26 @@ const Carrito = () => {
 
           <li className="flex p-4 font-semibold items-center md:justify-end justify-between gap-2 md:text-lg">
             <div className="items-center flex justify-center">
+              {/*agregarle flex al primer div siguiente*/}
+              {carrito.length > 0 && (
+                <div className="items-center  justify-start ">
+                  <button
+                    className="py-2  rounded-lg md:text-lg text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
+                    onClick={() => {
+                      vaciarCarrito();
+                      window.scrollTo(0, 0);
+                    }}
+                  >
+                    Vaciar Carrito
+                  </button>
+                </div>
+              )}
+
               <NavLink
                 to="/shop"
                 className="py-2 bg-red-700 rounded-lg  hover:bg-red-600 px-2 m-2 text-md font-semibold md: text-white"
               >
-                Volver al Shop
+                Seguir comprando
               </NavLink>
             </div>
             <div className="flex gap-1">
@@ -89,21 +101,6 @@ const Carrito = () => {
             </div>
           </li>
         </ul>
-      )}
-
-      {/*agregarle flex al primer div siguiente*/}
-      {carrito.length > 0 && (
-        <div className="items-center  justify-start hidden">
-          <button
-            className="py-2  bg-red-700 rounded-lg md:text-lg text-md hover:bg-red-600 px-2 m-2 text-md font-semibold text-white"
-            onClick={() => {
-              vaciarCarrito();
-              window.scrollTo(0, 0);
-            }}
-          >
-            Vaciar Carrito
-          </button>
-        </div>
       )}
     </div>
   );
