@@ -23,9 +23,9 @@ const Carrito = () => {
   const indiceProducto = 0;
 
   return (
-    <div className="transition-all duration-700 min-h-screen mx-auto max-w-6xl text-center items-center flex-col mt-10 md:mt-20">
-      <h1 className="text-4xl md:text-6xl pb-4 mt-22 pt-14 font-mono">
-        Carrito
+    <div className="transition-all duration-700 min-h-screen mx-auto max-w-6xl text-center items-center flex-col ">
+      <h1 className="text-md font-bold text-left px-2 pb-4  pt-2">
+        Mi carrito
       </h1>
 
       {carrito.length === 0 ? (
@@ -44,16 +44,8 @@ const Carrito = () => {
           </NavLink>
         </>
       ) : (
-        <ul className="border rounded-md divide-y md:m-0 m-2">
-          <li
-            className={`flex items-center p-4 font-semibold ${
-              esPantallaMobile && "hidden"
-            }`}
-          >
-            <div className="w-1/3">Producto</div>
-            <div className="w-1/3">Cantidad</div>
-            <div className="w-1/3">Precio</div>
-          </li>
+        <ul className="border rounded-md divide-y md:m-0 m-2 p-0">
+
 
           {carrito.map(
             (elem) =>
@@ -70,36 +62,38 @@ const Carrito = () => {
                 </li>
               )
           )}
+<li className="flex flex-row font-semibold p-0 m-2 md:m-0 items-center md:justify-end justify-between gap-2 md:text-lg">
+  <div className="items-center flex justify-center">
+    {/* Agregar flex al primer div siguiente */}
+    {carrito.length > 0 && (
+      <div className="items-center  justify-start ">
+        <button
+          className="py-2 rounded-lg md:text-lg text-sm text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
+          onClick={() => {
+            vaciarCarrito();
+            window.scrollTo(0, 0);
+          }}
+        >
+          Vaciar Carrito
+        </button>
+      </div>
+    )}
 
-          <li className="flex p-4 font-semibold items-center md:justify-end justify-between gap-2 md:text-lg">
-            <div className="items-center flex justify-center">
-              {/*agregarle flex al primer div siguiente*/}
-              {carrito.length > 0 && (
-                <div className="items-center  justify-start ">
-                  <button
-                    className="py-2  rounded-lg md:text-lg text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
-                    onClick={() => {
-                      vaciarCarrito();
-                      window.scrollTo(0, 0);
-                    }}
-                  >
-                    Vaciar Carrito
-                  </button>
-                </div>
-              )}
+    <NavLink
+      to="/shop"
+      className="py-2 bg-red-700 rounded-lg  hover:bg-red-600 px-2 m-2 md:text-md text-sm font-semibold md: text-white"
+    >
+      Seguir comprando
+    </NavLink>
+  </div>
 
-              <NavLink
-                to="/shop"
-                className="py-2 bg-red-700 rounded-lg  hover:bg-red-600 px-2 m-2 text-md font-semibold md: text-white"
-              >
-                Seguir comprando
-              </NavLink>
-            </div>
-            <div className="flex gap-1">
-              <div className="w-1/8 t">Total:</div>
-              <div className="w-1/8 text-red-700">${totalCarrito()}</div>
-            </div>
-          </li>
+  {/* Mover el div del total al final del li */}
+  <div className="flex gap-1 md:ml-2">
+    <div className="md:w-1/8 md:w-auto text-md">Total:</div>
+    <div className="md:w-1/8 text-red-700">${totalCarrito()}</div>
+  </div>
+</li>
+
         </ul>
       )}
     </div>
