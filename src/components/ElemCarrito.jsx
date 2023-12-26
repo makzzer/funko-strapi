@@ -101,7 +101,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
                 id={`cantidad-${id}`}
                 value={cantidadModificada}
                 readOnly
-                className="w-8 mx-1 text-red-700 text-xs text-center md:text-sm focus:outline-none"
+                className="w-8 mx-1 text-red-700 text-xs text-center md:text-end md:text-sm focus:outline-none"
                 onBlur={() =>
                   cantidadModificada === 0 && setCantidadModificada(1)
                 }
