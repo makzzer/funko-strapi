@@ -24,7 +24,7 @@ const Carrito = () => {
 
   return (
     <div className="transition-all duration-700 min-h-screen mx-auto max-w-6xl text-center items-center flex-col ">
-      <h1 className="text-md font-bold text-left px-2 pb-4  pt-2">
+      <h1 className="text-md font-bold text-black text-left md:px-4 px-8 pb-4  pt-2">
         Mi carrito
       </h1>
 
@@ -89,8 +89,8 @@ const Carrito = () => {
 
   {/* Mover el div del total al final del li */}
   <div className="flex gap-1 md:ml-2">
-    <div className="md:w-1/8 md:w-auto text-md">Total:</div>
-    <div className="md:w-1/8 text-red-700">${totalCarrito()}</div>
+    <div className="md:w-1/8 md:w-auto text-black md:text-md text-sm">Total:</div>
+    <div className="md:w-1/8 text-red-700 md:text-md text-sm">${totalCarrito()}</div>
   </div>
 </li>
 

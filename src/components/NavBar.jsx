@@ -140,7 +140,7 @@ const Nav = () => {
 
       {/* Menú retráctil del carrito */}
       <div
-        className={`bg-yellow-500 text-3xl z-30 gap-4 transition-all md:mt-32 duration-500 ease-in text-white md:w-[${maxWidth}] max-w-[${maxWidthMobile}] cursor-pointer ps-1 fixed top-0 right-0 transform ${
+        className={`bg-gray-100 text-3xl z-30 gap-4 transition-all md:mt-32 duration-500 ease-in text-white md:w-[${maxWidth}] max-w-[${maxWidthMobile}] cursor-pointer ps-1 fixed top-0 right-0 transform ${
           carritoMenuAbierto ? "translate-x-0" : `translate-x-full`
         }`}
         style={{ maxHeight: "90vh", overflowY: "auto" }} // Agrega estilos de desplazamiento aquí
@@ -148,7 +148,7 @@ const Nav = () => {
         {/* Contenido del menú del carrito */}
         <Carrito />
         <div
-          className="absolute top-2 right-2 text-2xl text-white cursor-pointer"
+          className="absolute top-2 right-2 text-2xl text-black cursor-pointer"
           onClick={toggleCarritoMenu}
         >
           <ion-icon name="close-outline"></ion-icon>
