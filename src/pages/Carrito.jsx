@@ -31,7 +31,7 @@ const Carrito = () => {
       {carrito.length === 0 ? (
         <>
           <div className=" p-4 mb-6 mx-2">
-            <h1 className="md:text-2xl text-2xl text-bold text-red-700 mb-4">
+            <h1 className="md:text-2xl text-2xl text-bold text-red-700 mb-">
               Tu carrito está vacío
             </h1>
           </div>
