@@ -63,7 +63,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
             <img src={img} alt="Producto" className="w-16 h-16" />
           </div>
 
-          <div className="text-start me-auto  max-w-[100px] md:min-w-[140px] min-w-[100px] text-black flex-1">
+          <div className="text-start me-auto  max-w-[100px] md:min-w-[140px] min-w-[80px] text-black flex-1">
             <h1
               className={`text-${
                 esPantallaMobile ? "sm" : "sm"
