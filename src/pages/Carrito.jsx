@@ -23,7 +23,7 @@ const Carrito = () => {
   const indiceProducto = 0;
 
   return (
-    <div className="transition-all duration-700 min-h-screen mx-auto max-w-6xl text-center items-center flex-col ">
+    <div className="transition-all duration-700 min-h-fit mx-auto max-w-6xl text-center items-center flex-col ">
       <h1 className="text-md font-bold text-black text-left md:px-4 px-8 pb-4  pt-2">
         Mi carrito
       </h1>
@@ -62,7 +62,7 @@ const Carrito = () => {
                 </li>
               )
           )}
-<li className="flex flex-row font-semibold p-0 m-2 md:m-0 items-center md:justify-end justify-between gap-2 md:text-lg">
+<li className="flex flex-row font-semibold min-h-max			p-0 m-2 md:m-0 items-center md:justify-end justify-between gap-2 md:text-lg">
   <div className="items-center flex justify-center">
     {/* Agregar flex al primer div siguiente */}
     {carrito.length > 0 && (
@@ -71,7 +71,8 @@ const Carrito = () => {
           className="py-2 rounded-lg md:text-lg text-sm text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
           onClick={() => {
             vaciarCarrito();
-            window.scrollTo(0, 0);
+            //window.scrollTo(0, 0);
+            
           }}
         >
           Vaciar Carrito
@@ -88,7 +89,7 @@ const Carrito = () => {
   </div>
 
   {/* Mover el div del total al final del li */}
-  <div className="flex gap-1 md:ml-2">
+  <div className="flex gap-1 md:ml-2 ">
     <div className="md:w-1/8 md:w-auto text-black md:text-md text-sm">Total:</div>
     <div className="md:w-1/8 text-red-700 md:text-md text-sm">${totalCarrito()}</div>
   </div>

@@ -63,7 +63,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
             <img src={img} alt="Producto" className="w-16 h-16" />
           </div>
 
-          <div className="text-start me-auto bg-yellow-200 max-w-[100px] md:min-w-[140px] min-w-[100px] text-black flex-1">
+          <div className="text-start me-auto  max-w-[100px] md:min-w-[140px] min-w-[100px] text-black flex-1">
             <h1
               className={`text-${
                 esPantallaMobile ? "sm" : "sm"
@@ -131,7 +131,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
             </div>
           </div>
 
-          <div className="text-end ms-2 md:ps-4">
+          <div className="text-left	 bg-red-200 ms-2">
             {!esPantallaMobile ? (
               <div className="flex flex-col">
                 <div>
@@ -142,7 +142,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
                   <h1
                     className={`text-${
                       esPantallaMobile ? "xs" : "sm"
-                    } md:text-md text-red-800 font-semibold`}
+                    } md:text-md text-red-800 text-start font-semibold`}
                   >
                     ${precio * cantidad}
                   </h1>
@@ -154,7 +154,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
                   {" "}
 
                   <div>
-                    <h1 className="text-sm font-semibold text-red-800">
+                    <h1 className="text-sm font-semibold text-start	 text-red-800">
                       ${precio * cantidad}
                     </h1>
                   </div>

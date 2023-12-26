@@ -80,7 +80,7 @@ const Shop = () => {
   return (
     <div className="transition-all duration-500 max-w-6xl mx-auto flex flex-col items-center container mt-10 md:mt-20">
       <div className="text-center text-4xl md:text-6xl mt-22 pt-14">
-        <h1>Shop</h1>
+        
       </div>
 
       <div className="pt-7 flex-row md:flex md:items-center justify-items-center justify-between md:mb-10 mb-2">
