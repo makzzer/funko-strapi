@@ -10,7 +10,7 @@ import Carrito from "../pages/Carrito";
 import PrivateLayout from "../layouts/PrivateLayout";
 import DashboardUser from "../pages/DashboardUser";
 import DetallesProducto from "../pages/DetallesProducto";
-import CarouselHome from "../components/Carousel/carouselHome";
+
 
 //voy a usar un layout y dentro de ese layout un objeto con todas las paginas como main del layout, eso lo hago con <Outlet/>
 
