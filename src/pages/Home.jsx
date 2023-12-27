@@ -2,7 +2,7 @@ import ListaLanzamientos from "../components/ListaLanzamientos";
 import ListaItemsTienda from "../components/ListaItemsTienda";
 import Branding from "../components/Branding";
 import { useState } from "react";
-import CarouselHome from "../components/Carousel/carouselHome";
+import CarouselHome from "./CarouselHome";
 
 //context productos
 import { useProductoContext } from "../context/ProductosContext";
