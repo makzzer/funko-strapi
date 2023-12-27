@@ -29,8 +29,8 @@ const CarouselHome = ({ ultimosLanzamientos }) => {
     <div className="max-w-screen-xl mx-auto p-4">
       <Slider {...settings}>
         {ultimosLanzamientos.map((lanzamiento) => (
-          <div key={lanzamiento.id} className="w-full mx-auto">
-            {/* Reemplaza ItemLanzamiento con tu componente real */}
+          <div key={lanzamiento.id} className="w-full mx-auto ">
+ 
             <ItemLanzamiento
               id={lanzamiento.id}
               title={lanzamiento.title}
@@ -41,7 +41,7 @@ const CarouselHome = ({ ultimosLanzamientos }) => {
               tag1={lanzamiento.tag1}
               tag2={lanzamiento.tag2}
             />
-            {/* Ejemplo de contenido para pruebas */}
+        
           </div>
         ))}
       </Slider>
