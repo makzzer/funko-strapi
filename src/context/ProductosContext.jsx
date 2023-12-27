@@ -229,48 +229,50 @@ const ProductosProvider = ({ children }) => {
     }
   };
 
-  // Obtener los datos de los productos desde la API de Strapi al cargar la aplicación
-  // Obtener los datos de los productos desde la API al cargar la aplicación
-  useEffect(() => {
-    // Hacemos una solicitud a la API para obtener los productos usando Axios
+ // Obtener los datos de los productos desde la API al cargar la aplicación
+useEffect(() => {
+  // Hacemos una solicitud a la API para obtener los productos usando Axios
 
-    // Cambia la URL de la API de Strapi
-    axios
-      .get("http://localhost:1337/api/funkos?populate=*")
-      .then((response) => {
-        // La respuesta de Axios incluye directamente los datos (response.data)
-        // Adaptar la estructura de los datos de Strapi a la de grillaShop
-        const datosAdaptados = response.data.data.map((item) => ({
-          id: item.id,
-          title: item.attributes.title,
-          subTitle:
-            item.attributes.categories?.data[0]?.attributes?.name ||
-            "CATEGORIA_POR_DEFECTO",
-          img: "http://localhost:1337"+item.attributes.imagen.data.attributes.formats.small.url,
-          precio: item.attributes.precio,
-          cuotas: `${item.attributes.cuotas} cuotas sin interés`,
-          tag1: item.attributes.tag1,
-          tag2: item.attributes.tag2,
-        }));
+  // Cambia la URL de la API de Strapi
+  axios
+    .get("http://localhost:1337/api/funkos?populate=*")
+    .then((response) => {
+      // Imprime la respuesta de la API para depuración
+      console.log("Respuesta de la API:", response);
 
-//http://localhost:1337/uploads/luke_1_27af8f544a.webp
+      // La respuesta de Axios incluye directamente los datos (response.data)
+      // Adaptar la estructura de los datos de Strapi a la de grillaShop
+      const datosAdaptados = response.data.data.map((item) => ({
+        id: item.id,
+        title: item.attributes.title,
+        subTitle:
+          item.attributes.categories?.data[0]?.attributes?.name ||
+          "CATEGORIA_POR_DEFECTO",
+        img: "http://localhost:1337" + item.attributes.imagen.data.attributes.formats.small.url,
+        precio: item.attributes.precio,
+        cuotas: `${item.attributes.cuotas} cuotas sin interés`,
+        tag1: item.attributes.tag1,
+        tag2: item.attributes.tag2,
+      }));
 
-        //console.log(datosAdaptados);
+      //console.log(datosAdaptados);
 
-        // Actualizamos el estado de los productos en el contexto con los datos adaptados
-        setProductos(datosAdaptados);
-        // Almacenamos los productos en localStorage para futuras cargas de la aplicación
-        localStorage.setItem("productosTienda", JSON.stringify(datosAdaptados));
+      // Actualizamos el estado de los productos en el contexto con los datos adaptados
+      setProductos(datosAdaptados);
+      // Almacenamos los productos en localStorage para futuras cargas de la aplicación
+      localStorage.setItem("productosTienda", JSON.stringify(datosAdaptados));
 
-        //console.log(datosAdaptados);
+      //console.log(datosAdaptados);
 
-        // Asigna los datos adaptados a grillaShop
-        //setGrillaShop(datosAdaptados);
-      })
-      .catch((error) => {
-        console.error("Error al obtener los productos:", error);
-      });
-  }, []);
+      // Asigna los datos adaptados a grillaShop
+      //setGrillaShop(datosAdaptados);
+    })
+    .catch((error) => {
+      // Imprime el error para depuración
+      console.error("Error al obtener los productos:", error);
+    });
+}, []);
+
 
   // Quedo atento a los cambios del carrito
   // El useEffect que tienes para actualizar localStorage no cambia
