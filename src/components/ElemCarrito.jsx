@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCarritoContext } from "../context/CarritoContext";
 import { DetectarTamañoPantalla } from "../utilities/DetectarTamañoPantalla";
 import swal from "sweetalert";
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
 
 const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
   const { eliminarElementoCarrito, restarElemento, sumarElemento } =
@@ -55,7 +56,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
         <div className="flex flex-row justify-between font-semibold items-center min-w-full">
           <div className="">
             <button className="cursor-pointer me-0 " onClick={eliminarElemento}>
-              <ion-icon name="close-circle-outline" size="large"></ion-icon>
+              <DeleteForeverOutlinedIcon className="text-red-700" style={{ fontSize: '32px' }}/>
             </button>
           </div>
 
@@ -63,7 +64,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
             <img src={img} alt="Producto" className="w-16 h-16" />
           </div>
 
-          <div className="text-start me-auto  max-w-[100px] md:min-w-[140px] min-w-[80px] text-black flex-1">
+          <div className="text-start me-auto  max-w-[100px] md:min-w-[120px] min-w-[80px] text-black flex-1">
             <h1
               className={`text-${
                 esPantallaMobile ? "sm" : "sm"
@@ -75,7 +76,7 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
 
           {/**modificar este div */}
 
-          <div className="flex items-center ms-2 space-x-0">
+          <div className="flex items-center  space-x-0  me-auto ">
             <div className="flex items-center border bg-red-700 border-gray-300 rounded-md overflow-hidden min-w-[90px]">
               <button
                 onClick={restarElementoCarrito}
@@ -131,12 +132,10 @@ const ElemCarrito = ({ id, title, precio, img, cantidad }) => {
             </div>
           </div>
 
-          <div className="text-left	 bg-red-200 ms-2">
+          <div className="text-left	 ms-2 min-w-[70px]">
             {!esPantallaMobile ? (
               <div className="flex flex-col">
-                <div>
-                  <h1 className="text-xs">Precio:</h1>
-                </div>
+
                 <div>
                   {" "}
                   <h1

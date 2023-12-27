@@ -45,8 +45,6 @@ const Carrito = () => {
         </>
       ) : (
         <ul className="border rounded-md divide-y md:m-0 m-2 p-0">
-
-
           {carrito.map(
             (elem) =>
               elem.cantidad != 0 && (
@@ -62,39 +60,41 @@ const Carrito = () => {
                 </li>
               )
           )}
-<li className="flex flex-row font-semibold min-h-max			p-0 m-2 md:m-0 items-center md:justify-end justify-between gap-2 md:text-lg">
-  <div className="items-center flex justify-center">
-    {/* Agregar flex al primer div siguiente */}
-    {carrito.length > 0 && (
-      <div className="items-center  justify-start ">
-        <button
-          className="py-2 rounded-lg md:text-lg text-sm text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
-          onClick={() => {
-            vaciarCarrito();
-            //window.scrollTo(0, 0);
-            
-          }}
-        >
-          Vaciar Carrito
-        </button>
-      </div>
-    )}
+          <li className="flex flex-row font-semibold min-h-max	p-0 m-2 md:m-0 items-center md:justify-end justify-between gap-2 md:text-lg">
+            <div className="items-center flex justify-center md:pb-10">
+              {/* Agregar flex al primer div siguiente */}
+              {carrito.length > 0 && (
+                <div className="items-center  justify-start ">
+                  <button
+                    className="py-2 rounded-lg md:text-lg text-sm text-md text-black hover:bg-red-600 px-2 m-2 text-md font-semibold "
+                    onClick={() => {
+                      vaciarCarrito();
+                      //window.scrollTo(0, 0);
+                    }}
+                  >
+                    Vaciar Carrito
+                  </button>
+                </div>
+              )}
 
-    <NavLink
-      to="/shop"
-      className="py-2 bg-red-700 rounded-lg  hover:bg-red-600 px-2 m-2 md:text-md text-sm font-semibold md: text-white"
-    >
-      Seguir comprando
-    </NavLink>
-  </div>
+              <NavLink
+                to="/shop"
+                className="py-2 bg-red-700 rounded-lg  hover:bg-red-600 px-2 m-2 md:text-md text-sm font-semibold md: text-white"
+              >
+                Seguir comprando
+              </NavLink>
 
-  {/* Mover el div del total al final del li */}
-  <div className="flex gap-1 md:ml-2 ">
-    <div className="md:w-1/8 md:w-auto text-black md:text-md text-sm">Total:</div>
-    <div className="md:w-1/8 text-red-700 md:text-md text-sm">${totalCarrito()}</div>
-  </div>
-</li>
-
+              {/* Mover el div del total al final del li */}
+              <div className="flex gap-1 md:ml-2 ">
+                <div className="md:w-1/8 md:w-auto text-black md:text-md text-sm">
+                  Total:
+                </div>
+                <div className="md:w-1/8  text-red-700 md:text-md text-sm">
+                  ${totalCarrito()}
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
       )}
     </div>

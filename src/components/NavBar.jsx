@@ -140,7 +140,7 @@ const Nav = () => {
 
       {/* Menú retráctil del carrito */}
       <div
-        className={`bg-gray-100 text-3xl border-gray-300 border z-30 gap-4 transition-all md:mt-32 duration-500 ease-in w-full text-white md:w-[${maxWidth}] max-w-[${maxWidthMobile}] md:min-w-[200px] cursor-pointer ps-1 fixed top-0 right-0 transform ${
+        className={`bg-gray-100 text-3xl border-gray-300 border z-30 gap-4 transition-all md:mt-32 duration-500 ease-in w-full md:w-1/4  text-white md:w-[${maxWidth}] max-w-[${maxWidthMobile}] md:min-w-[200px] cursor-pointer ps-1 fixed top-0 right-0 transform ${
           carritoMenuAbierto ? "translate-x-0" : `translate-x-full`
         }`}
         style={{ maxHeight: "90vh", overflowY: "auto" }} // Agrega estilos de desplazamiento aquí

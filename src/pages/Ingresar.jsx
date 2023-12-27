@@ -3,7 +3,6 @@ import { DetectarTamañoPantalla } from "../utilities/DetectarTamañoPantalla";
 import SignIn from "../components/SingIn";
 import SignUp from "../components/SingUp";
 
-
 const Ingresar = () => {
   const esPantallaMobile = DetectarTamañoPantalla();
   console.log(esPantallaMobile);
@@ -14,15 +13,17 @@ const Ingresar = () => {
       {/*contenedor general del login*/}
       <div className="min-h-screen text-center mx-auto items-center flex max-w-6xl container flex-col mt-5 md:pt-14 md:mt-18 transition-all duration-500">
         {/*contenedor con la imagen responsive*/}
-        <div className="text-center md:pt-18 pt-14">
-          {esPantallaMobile ? (
-            <IconLogoSimple ancho={70} alto={100} />
-          ) : (
-            <IconLogoSimple ancho={100} alto={100} />
-          )}
-        </div>
+        {/*
+  <div className="text-center md:pt-18 pt-14">
+    {esPantallaMobile ? (
+      <IconLogoSimple ancho={70} alto={100} />
+    ) : (
+      <IconLogoSimple ancho={100} alto={100} />
+    )}
+  </div>
+*/}
 
-        <div className="flex md:gap-40 gap-20 md:flex-row flex-col mt-5  md:bg-gray-50 md:p-10 pb-10">
+        <div className="flex mt-20 md:gap-40 gap-20 md:flex-row flex-col   md:bg-gray-50 md:p-10 pb-10">
           <div className="flex flex-col">
             <h3 className="text-md font-semibold text-blue-500">
               ¿Ya tenés cuenta?

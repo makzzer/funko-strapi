@@ -17,7 +17,7 @@ const DefaultLayout = () => {
           <Outlet />
         </main>
 
-        <div >
+        <div className="w-full">
           <Footer />
         </div>
       </div>
