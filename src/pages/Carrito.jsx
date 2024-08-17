@@ -48,9 +48,9 @@ const Carrito = () => {
           {carrito.map(
             (elem) =>
               elem.cantidad != 0 && (
-                <li className="p-0 m-2 md:m-0">
+                <li className="p-0 m-2 md:m-0" key={elem.id}>
                   <ElemCarrito
-                    key={elem.id}
+                    
                     id={elem.id}
                     title={elem.title}
                     precio={elem.precio}

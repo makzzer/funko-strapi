@@ -26,7 +26,7 @@ const Home = ({ elementosLanding, nuevosLanzamientos }) => {
   return (
     <>
       <div className="transition-all duration-500 max-w-6xl mx-auto md:flex md:flex-col items-center container justify-between content-center md:px-10 ">
-        <div className="md:mb-0 mb-8 h-[50vh] transition-all duration-500 container max-w-6xl bg-cover w-screen bg-no-repeat min-w-full  bg-[url('./assets/images/funko2.jpg')]">
+        <div className="md:mb-0 mb-8 h-[50vh] transition-all duration-500 container max-w-6xl bg-cover w-screen bg-no-repeat min-w-full  bg-[url('./assets/images/funko5.jpg')]">
           <div className="max-w-6xl mx-auto h-full md:mt-2 mt-16 ">
             <Branding />
           </div>

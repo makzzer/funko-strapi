@@ -25,7 +25,7 @@ const DetallesProducto = () => {
             item.attributes.categories?.data[0]?.attributes?.name ||
             "CATEGORIA_POR_DEFECTO",
           img:
-            "http://localhost:1337" +
+            "http://localhost:1337/" +
             item.attributes.imagen.data.attributes.url,
           precio: item.attributes.precio,
           cuotas: `${item.attributes.cuotas} cuotas sin interés`,
