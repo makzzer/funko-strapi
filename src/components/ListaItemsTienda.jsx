@@ -11,14 +11,14 @@ const ListaItemsTienda = ({ elementosLand }) => {
     {elementosLand.map((elem) => (
         
         <>
-        <div key={elem.id}>
+        <li key={elem.id}>
           <ItemTienda
             title={elem.title}
             description={elem.description}
             img={elem.img}
             id={elem.id}
           />
-          </div>
+          </li>
         </>
       ))}
 
